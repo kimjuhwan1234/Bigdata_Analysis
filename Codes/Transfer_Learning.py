@@ -31,7 +31,6 @@ class Transfer_Learning:
                 gt = gt.to(self.device)
 
                 output, loss = model(data, gt)
-                output = torch.sigmoid(output)
                 total_loss += loss
 
                 accuracy = self.calculate_accuracy(output, gt)
@@ -54,7 +53,6 @@ class Transfer_Learning:
 
             opt.zero_grad()
             output, loss = model(data, gt)
-            output = torch.sigmoid(output)
             loss.backward()
             opt.step()
 

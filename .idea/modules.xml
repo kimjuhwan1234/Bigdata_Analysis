@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Bigdata_Analysis.iml" filepath="$PROJECT_DIR$/.idea/Bigdata_Analysis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Temperature_Regression.iml" filepath="$PROJECT_DIR$/.idea/Temperature_Regression.iml" />
     </modules>
   </component>
 </project>

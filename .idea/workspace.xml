@@ -53,7 +53,7 @@
 }</component>
   <component name="RunManager" selected="Python.1_main">
     <configuration name="0_preprocessing (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Bigdata_Analysis" />
+      <module name="Temperature_Regression" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -76,7 +76,7 @@
       <method v="2" />
     </configuration>
     <configuration name="0_preprocessing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Bigdata_Analysis" />
+      <module name="Temperature_Regression" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -99,7 +99,7 @@
       <method v="2" />
     </configuration>
     <configuration name="1_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Bigdata_Analysis" />
+      <module name="Temperature_Regression" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -122,7 +122,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Transfer_Learning" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Bigdata_Analysis" />
+      <module name="Temperature_Regression" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />

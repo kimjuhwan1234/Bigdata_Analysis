@@ -3,7 +3,9 @@ from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
 from torch.optim.lr_scheduler import ReduceLROnPlateau
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
+import numpy as np
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
@@ -13,18 +15,17 @@ import matplotlib.pyplot as plt
 class CustomDataset(Dataset):
     def __init__(self, data):
         self.data = data
-        self.window_size = 358 * 10
+        self.window_size = 358 * 5
 
     def __len__(self):
-        return len(self.data) - self.window_size - 357
+        return len(self.data) - self.window_size - 358
 
     def __getitem__(self, index):
         start_index = index
         end_index = index + self.window_size
 
-        # 만약 end_index가 데이터셋의 길이보다 크거나 같으면 데이터셋 생성 종료
-        if end_index >= len(self.data) - self.window_size - 357:
-            raise IndexError("Index out of range, dataset creation complete.")
+        if end_index + 358 > len(self.data):
+            raise IndexError("Index out of bounds. Reached the end of the dataset.")
 
         X_train = self.data.iloc[start_index:end_index]
         y_train = self.data.iloc[end_index:end_index + 358, 0]
@@ -35,7 +36,6 @@ class CustomDataset(Dataset):
         return X_train_tensor, y_train_tensor
 
 
-# LSTM을 여러 번 쌓아서 사용할 모델 클래스 정의
 class StackedLSTM(nn.Module):
     def __init__(self, input_size, hidden_size, num_layers, output_size):
         super(StackedLSTM, self).__init__()
@@ -46,6 +46,9 @@ class StackedLSTM(nn.Module):
         # 두 번째 LSTM 층
         self.lstm2 = nn.LSTM(hidden_size, hidden_size, num_layers=num_layers, batch_first=True)
 
+        # 세 번째 LSTM 층
+        self.lstm3 = nn.LSTM(hidden_size, hidden_size, num_layers=num_layers, batch_first=True)
+
         # 출력을 위한 선형 레이어
         self.fc = nn.Linear(hidden_size, output_size)
 
@@ -55,6 +58,9 @@ class StackedLSTM(nn.Module):
 
         # 두 번째 LSTM 층
         out, _ = self.lstm2(out)
+
+        # 세 번째 LSTM 층
+        out, _ = self.lstm3(out)
 
         # 마지막 시간 단계의 출력을 사용하여 선형 레이어 통과
         out = self.fc(out[:, -1, :])
@@ -100,12 +106,11 @@ if __name__ == "__main__":
     dataload = True
     if dataload:
         print('Loading data...')
-        train_ratio = 0.8
-        val_ratio = 0.1
+        train_ratio = 0.7
+        val_ratio = 0.2
         test_ratio = 0.1
 
         train_data, val_test_data = train_test_split(data, test_size=(val_ratio + test_ratio), shuffle=False)
-        val_test_size = len(val_test_data)
         val_data, test_data = train_test_split(val_test_data, test_size=test_ratio / (val_ratio + test_ratio),
                                                shuffle=False)
 
@@ -197,45 +202,56 @@ if __name__ == "__main__":
         model.load_state_dict(torch.load(weight_path))
         print('Weights are loaded!')
 
-    # Prediction = True
-    # if Prediction:
-    #     print('Try prediction...')
-    #     model.to(device)
-    #     to_predict =
-    #
-    #     eval_transform = get_transform()
-    #     test_image = eval_transform(test_image).unsqueeze(0)
-    #
-    #     model.eval()
-    #     with torch.no_grad():
-    #         predicted_mask = model(test_image)
-    #         predicted_mask = torch.sigmoid(predicted_mask)
-    #
-    #
-    #     output_image.save("../Database/output.png")
-    #     print("Masking and saving complete!")
-    #
-    # if not Prediction:
-    #     print('Evaluation in progress for testset...')
-    #     image, mask = test_dataset[9]
-    #     logits_mask = model(image.to(device).unsqueeze(0))  # (c,h,w) -> (b,c,h,w)
-    #     logits_mask = torch.sigmoid(logits_mask)
-    #     pred_mask = (logits_mask > 0.5) * 1.0
-    #     pred = pred_mask.squeeze(0)
-    #
-    #     image_pil = ToPILImage()(image.cpu())
-    #     true_mask_pil = ToPILImage()(mask.cpu())
-    #     predicted_mask_pil = ToPILImage()(pred.cpu())
-    #
-    #     fig, axs = plt.subplots(1, 3, figsize=(12, 4))
-    #
-    #     axs[0].imshow(image_pil)
-    #     axs[0].set_title('Image')
-    #
-    #     axs[1].imshow(true_mask_pil)
-    #     axs[1].set_title('True Mask')
-    #
-    #     axs[2].imshow(predicted_mask_pil)
-    #     axs[2].set_title('Predicted Mask')
-    #
-    #     plt.show()
+    Prediction = False
+    if Prediction:
+        print('Try prediction...')
+
+        model.to(device)
+        to_predict = data.iloc[-1790:, :]
+        to_predict = torch.Tensor(to_predict.values)
+
+        model.eval()
+        with torch.no_grad():
+            predicted = model(to_predict)
+
+        pred = pd.read_csv('../Database/sample_submission.csv')
+        pred['평균기온'] = predicted
+
+        pred.to_csv('../Files/LSTM.csv', index=False)
+        print("Prediction saved!")
+
+    if not Prediction:
+        print('Evaluation in progress for testset...')
+
+        model.eval()
+        all_predictions = []
+        all_gt = []
+
+        with torch.no_grad():
+            for i in range(len(test_dataset)):
+                data, gt = test_dataset[i]
+                output = model(data)
+
+                all_predictions.extend(output.tolist())
+                all_gt.extend(gt.tolist())
+
+        all_mse = []
+        all_mae = []
+        all_r2 = []
+
+        for i in range(len(all_predictions)):
+            predictions = all_predictions[i]
+            ground_truth = all_gt[i]
+
+            mse = mean_squared_error(ground_truth, predictions)
+            mae = mean_absolute_error(ground_truth, predictions)
+            r2 = r2_score(ground_truth, predictions)
+            all_mse.append(mse)
+            all_mae.append(mae)
+            all_r2.append(r2)
+
+        print(f'Mean Squared Error (MSE): {np.mean(all_mse):.4f}')
+        print(f'Mean Absolute Error (MAE): {np.mean(all_mae):.4f}')
+        print(f'R-squared (R2): {np.mean(all_r2):.4f}')
+        print("Evaluation finished!")
+        

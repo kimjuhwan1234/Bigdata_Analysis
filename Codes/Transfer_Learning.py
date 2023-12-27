@@ -47,7 +47,14 @@ class Transfer_Learning:
         len_data = len(dataset_dl.dataset)
 
         model.train()
+        # i=0
         for data, gt in tqdm(dataset_dl):
+            # i+=1
+            # print(i)
+            #
+            # if i >= 508:
+            #     print(data.shape)
+            #     print(gt.shape)
             data = data.to(self.device)
             gt = gt.to(self.device)
 

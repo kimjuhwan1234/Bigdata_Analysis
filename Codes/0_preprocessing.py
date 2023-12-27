@@ -3,6 +3,7 @@ import warnings
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+
 from sklearn.decomposition import PCA
 from catboost import CatBoostRegressor
 from sklearn.linear_model import LinearRegression
@@ -97,7 +98,7 @@ if __name__ == "__main__":
         predicted_values2 = model.predict(missing2)
         data.loc[data['일조율'].isnull(), '일조율'] = predicted_values2
 
-    value3 = True
+    value3 = False
     if value3:
         train_rainfall = data.dropna(axis=0)
         test_rainfall = data[data['강수량'].isnull()].drop('강수량', axis=1)
@@ -111,12 +112,12 @@ if __name__ == "__main__":
         predicted_values_rainfall = cat_model.predict(test_rainfall)
         data.loc[data['강수량'].isnull(), '강수량'] = predicted_values_rainfall
 
-    # plt.figure(figsize=(10, 6))
-    # plt.plot(data.index[:1000], data['강수량'].values[:1000], marker='o', linestyle='-', color='b')
-    # plt.xlabel('Date')
-    # plt.xticks(rotation=45)
-    # plt.tight_layout()
-    # plt.show()
+    plt.figure(figsize=(10, 6))
+    plt.plot(data.index, data['강수량'].values, marker='o', linestyle='-', color='b')
+    plt.xlabel('Date')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
 
     PCA_data = generate_PCA_data(data)
 

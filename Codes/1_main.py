@@ -4,8 +4,7 @@ from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from gluonts.torch.model.deepar import DeepARModel
-import segmentation_models_pytorch as smp
+
 
 import numpy as np
 import torch.nn as nn
@@ -86,8 +85,6 @@ class RegressionModel(nn.Module):
             nn.Dropout(p=0.5),
             nn.Linear(512, 358),
         )
-
-        self.additional_layer2 = DeepARModel()
 
     def forward(self, train, gt=None):
         output = self.backbone(train)

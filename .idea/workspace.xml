@@ -5,9 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e6becd2-476a-4192-b6d5-367c9e3fa6e1" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/1_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/1_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/EDA.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/EDA.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/dataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/best.pth.tar" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/best.pth.tar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/best_ND.png" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/best_ND.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/elect_ND_summary.png" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/elect_ND_summary.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/elect_loss_summary.png" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/elect_loss_summary.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/metrics_test_best_weights.json" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/metrics_test_best_weights.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/param_search/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/param_search/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/model/LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/model/LSTM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/model/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/model/net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/preprocess_elect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/preprocess_elect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/search_hyperparams.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/search_hyperparams.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +44,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -38,6 +61,7 @@
     &quot;Python.0_preprocessing.executor&quot;: &quot;Run&quot;,
     &quot;Python.1_main.executor&quot;: &quot;Debug&quot;,
     &quot;Python.Preprocessing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Scratch.executor&quot;: &quot;Run&quot;,
     &quot;Python.Transfer_Learning.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -49,6 +73,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -57,7 +82,7 @@
       <recent name="C:\Users\김주환\Documents\GitHub\Temperature_Regression\Codes" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.0_preprocessing (1)">
+  <component name="RunManager" selected="Python.Scratch">
     <configuration name="0_preprocessing (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Temperature_Regression" />
       <option name="ENV_FILES" value="" />
@@ -127,6 +152,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Scratch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Temperature_Regression" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Codes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Codes/Scratch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Transfer_Learning" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Temperature_Regression" />
       <option name="ENV_FILES" value="" />
@@ -152,6 +200,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Scratch" />
         <item itemvalue="Python.0_preprocessing (1)" />
         <item itemvalue="Python.1_main" />
         <item itemvalue="Python.Transfer_Learning" />
@@ -189,6 +238,8 @@
       <workItem from="1703728108469" duration="7000" />
       <workItem from="1703728830168" duration="2957000" />
       <workItem from="1703736720073" duration="623000" />
+      <workItem from="1703738334734" duration="4884000" />
+      <workItem from="1703743374739" duration="26000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -229,17 +280,13 @@
           <line>70</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/0_preprocessing.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Temperature_Regression$0_preprocessing__1_.coverage" NAME="0_preprocessing (1) Coverage Results" MODIFIED="1703727205650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/Temperature_Regression$0_preprocessing__1_.coverage" NAME="0_preprocessing (1) Coverage Results" MODIFIED="1703738666872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$Transfer_Learning.coverage" NAME="Transfer_Learning Coverage Results" MODIFIED="1703595519463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/Temperature_Regression$Scratch.coverage" NAME="Scratch Coverage Results" MODIFIED="1703741540323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$1_main.coverage" NAME="1_main Coverage Results" MODIFIED="1703599207838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$0_preprocessing__1_.coverage" NAME="0_preprocessing (1) Coverage Results" MODIFIED="1703596449442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$0_preprocessing.coverage" NAME="0_preprocessing Coverage Results" MODIFIED="1703409776391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />

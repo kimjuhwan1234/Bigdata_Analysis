@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e6becd2-476a-4192-b6d5-367c9e3fa6e1" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/Codes/EDA.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codes/1_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/1_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codes/EDA.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/EDA.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +41,9 @@
     &quot;Python.Transfer_Learning.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/김주환/Documents/GitHub/Temperature_Regression/Codes&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/김주환/Documents/GitHub/Time_Series_Analysis&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -184,6 +186,8 @@
       <workItem from="1703644785944" duration="57000" />
       <workItem from="1703681690727" duration="8524000" />
       <workItem from="1703727184141" duration="482000" />
+      <workItem from="1703728108469" duration="7000" />
+      <workItem from="1703728830168" duration="1688000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -223,11 +227,6 @@
           <url>file://$PROJECT_DIR$/Codes/Transfer_Learning.py</url>
           <line>70</line>
           <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/1_main.py</url>
-          <line>124</line>
-          <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Codes/0_preprocessing.py</url>

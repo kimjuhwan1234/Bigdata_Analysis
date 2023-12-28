@@ -69,26 +69,60 @@ class StackedLSTM(nn.Module):
         return out
 
 
+class StackedGRU(nn.Module):
+    def __init__(self, input_size, hidden_size, num_layers, output_size):
+        super(StackedGRU, self).__init__()
+
+        # 첫 번째 GRU 층
+        self.GRU1 = nn.GRU(input_size, hidden_size, num_layers=num_layers, batch_first=True)
+
+        # 두 번째 GRU 층
+        self.GRU2 = nn.GRU(hidden_size, hidden_size, num_layers=num_layers, batch_first=True)
+
+        # 세 번째 GRU 층
+        self.GRU3 = nn.GRU(hidden_size, hidden_size, num_layers=num_layers, batch_first=True)
+
+        # 출력을 위한 선형 레이어
+        self.fc = nn.Linear(hidden_size, output_size)
+
+    def forward(self, x):
+        # 첫 번째 GRU 층
+        out, _ = self.GRU1(x)
+
+        # 두 번째 GRU 층
+        out, _ = self.GRU2(out)
+
+        # 세 번째 GRU 층
+        out, _ = self.GRU3(out)
+
+        # 마지막 시간 단계의 출력을 사용하여 선형 레이어 통과
+        out = self.fc(out[:, -1, :])
+
+        return out
+
+
 class RegressionModel(nn.Module):
     def __init__(self):
         super(RegressionModel, self).__init__()
 
         self.backbone = StackedLSTM(input_size=10, hidden_size=128, num_layers=2, output_size=358)
 
-        self.additional_layer = nn.Sequential(
-            nn.Linear(358, 512),
-            nn.ReLU(inplace=True),
-            nn.Linear(512, 512),
-            nn.ReLU(inplace=True),
-            nn.Linear(512, 512),
-            nn.ReLU(inplace=True),
-            nn.Dropout(p=0.5),
-            nn.Linear(512, 358),
-        )
+        self.additional_layer = StackedGRU(input_size=10, hidden_size=128, num_layers=2, output_size=358)
+
+        # self.additional_layer = nn.Sequential(
+        #     nn.Linear(358, 512),
+        #     nn.ReLU(inplace=True),
+        #     nn.Linear(512, 512),
+        #     nn.ReLU(inplace=True),
+        #     nn.Linear(512, 512),
+        #     nn.ReLU(inplace=True),
+        #     nn.Dropout(p=0.5),
+        #     nn.Linear(512, 358),
+        # )
 
     def forward(self, train, gt=None):
         output = self.backbone(train)
-        # output = self.additional_layer(output)
+        output = self.additional_layer(output)
         loss = F.smooth_l1_loss(output, gt) + F.mse_loss(output, gt)
 
         if gt != None:

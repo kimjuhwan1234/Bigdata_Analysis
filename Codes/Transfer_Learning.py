@@ -1,5 +1,4 @@
-from tqdm.notebook import tqdm
-
+import sys
 import time
 import torch
 import pandas as pd
@@ -9,24 +8,35 @@ class Transfer_Learning:
     def __init__(self, device):
         self.device = device
 
+    def plot_bar(self, mode, i, len_data):
+        progress = i / len_data
+        bar_length = 30
+        block = int(round(bar_length * progress))
+        progress_bar = f'{mode}: [{"-" * block}{"." * (bar_length - block)}] {progress * 100:.2f}%'
+        sys.stdout.write('\r' + progress_bar)
+
     def get_lr(self, opt):
         for param_group in opt.param_groups:
             return param_group['lr']
 
     def calculate_accuracy(self, output, gt):
         # 정확도 계산 (MAE)
-        accuracy = 1.0 - torch.abs(output - gt).mean().item()
+        accuracy = torch.mean(torch.abs(output - gt))
         return accuracy
 
     def eval_fn(self, model, dataset_dl):
         total_loss = 0.0
         total_accuracy = 0.0
-        len_data = len(dataset_dl.dataset)
+        len_data = len(dataset_dl)
 
         model.eval()
 
         with torch.no_grad():
-            for data, gt in tqdm(dataset_dl):
+            i = 0
+            for data, gt in dataset_dl:
+                i += 1
+                self.plot_bar('Val', i, len_data)
+
                 data = data.to(self.device)
                 gt = gt.to(self.device)
 
@@ -44,17 +54,14 @@ class Transfer_Learning:
     def train_fn(self, model, dataset_dl, opt):
         total_loss = 0.0
         total_accuracy = 0.0
-        len_data = len(dataset_dl.dataset)
+        len_data = len(dataset_dl)
 
         model.train()
-        # i=0
-        for data, gt in tqdm(dataset_dl):
-            # i+=1
-            # print(i)
-            #
-            # if i >= 508:
-            #     print(data.shape)
-            #     print(gt.shape)
+        i = 0
+        for data, gt in dataset_dl:
+            i += 1
+            self.plot_bar('Train', i, len_data)
+
             data = data.to(self.device)
             gt = gt.to(self.device)
 
@@ -102,6 +109,8 @@ class Transfer_Learning:
             loss_history.loc[epoch, 'val'] = val_loss
             accuracy_history.loc[epoch, 'val'] = val_accuracy
 
+            print(' ')
+
             if val_loss < best_loss:
                 best_loss = val_loss
                 torch.save(model.state_dict(), weight_path)
@@ -110,7 +119,7 @@ class Transfer_Learning:
             lr_scheduler.step(val_loss)
 
             print(f'train loss: {train_loss:.2f}, val loss: {val_loss:.2f}')
-            print(f'accuracy: {100 * val_accuracy:.2f} %, time: {(time.time() - start_time) / 60:.2f}')
+            print(f'MAE: {val_accuracy:.4f} , time: {(time.time() - start_time) / 60:.2f}')
 
             print('-' * 10)
 

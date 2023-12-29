@@ -5,7 +5,6 @@ from sklearn.model_selection import train_test_split
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
-
 import numpy as np
 import torch.nn as nn
 import torch.optim as optim
@@ -28,7 +27,7 @@ class CustomDataset(Dataset):
         if end_index + 358 > len(self.data):
             raise IndexError("Index out of bounds. Reached the end of the dataset.")
 
-        X_train = self.data.iloc[start_index:end_index]
+        X_train = self.data.iloc[start_index:end_index, :]
         y_train = self.data.iloc[end_index:end_index + 358, 0]
 
         X_train_tensor = torch.Tensor(X_train.values)
@@ -42,13 +41,13 @@ class StackedLSTM(nn.Module):
         super(StackedLSTM, self).__init__()
 
         # 첫 번째 LSTM 층
-        self.lstm1 = nn.LSTM(input_size, hidden_size, num_layers=num_layers, batch_first=True)
+        self.lstm1 = nn.LSTM(input_size, hidden_size, num_layers=num_layers, dropout=0.4, batch_first=True)
 
         # 두 번째 LSTM 층
-        self.lstm2 = nn.LSTM(hidden_size, hidden_size, num_layers=num_layers, batch_first=True)
+        self.lstm2 = nn.LSTM(hidden_size, hidden_size, num_layers=num_layers, dropout=0.2, batch_first=True)
 
         # 세 번째 LSTM 층
-        self.lstm3 = nn.LSTM(hidden_size, hidden_size, num_layers=num_layers, batch_first=True)
+        self.lstm3 = nn.LSTM(hidden_size, hidden_size, num_layers=num_layers, dropout=0.1, batch_first=True)
 
         # 출력을 위한 선형 레이어
         self.fc = nn.Linear(hidden_size, output_size)
@@ -63,8 +62,10 @@ class StackedLSTM(nn.Module):
         # 세 번째 LSTM 층
         out, _ = self.lstm3(out)
 
-        # 마지막 시간 단계의 출력을 사용하여 선형 레이어 통과
-        out = self.fc(out[:, -1, :])
+        # 출력을 위한 선형 레이어
+        out = self.fc(out)
+
+        out = out[:, :358, :]
 
         return out
 
@@ -74,13 +75,13 @@ class StackedGRU(nn.Module):
         super(StackedGRU, self).__init__()
 
         # 첫 번째 GRU 층
-        self.GRU1 = nn.GRU(input_size, hidden_size, num_layers=num_layers, batch_first=True)
+        self.GRU1 = nn.GRU(input_size, hidden_size, num_layers=num_layers, dropout=0.4, batch_first=True)
 
         # 두 번째 GRU 층
-        self.GRU2 = nn.GRU(hidden_size, hidden_size, num_layers=num_layers, batch_first=True)
+        self.GRU2 = nn.GRU(hidden_size, hidden_size, num_layers=num_layers, dropout=0.2, batch_first=True)
 
         # 세 번째 GRU 층
-        self.GRU3 = nn.GRU(hidden_size, hidden_size, num_layers=num_layers, batch_first=True)
+        self.GRU3 = nn.GRU(hidden_size, hidden_size, num_layers=num_layers, dropout=0.1, batch_first=True)
 
         # 출력을 위한 선형 레이어
         self.fc = nn.Linear(hidden_size, output_size)
@@ -95,19 +96,21 @@ class StackedGRU(nn.Module):
         # 세 번째 GRU 층
         out, _ = self.GRU3(out)
 
-        # 마지막 시간 단계의 출력을 사용하여 선형 레이어 통과
-        out = self.fc(out[:, -1, :])
+        # 출력을 위한 선형 레이어
+        out = self.fc(out)
 
         return out
 
 
 class RegressionModel(nn.Module):
-    def __init__(self):
+    def __init__(self, input_size, hidden_size, num_layers, output_size):
         super(RegressionModel, self).__init__()
 
-        self.backbone = StackedLSTM(input_size=10, hidden_size=128, num_layers=2, output_size=358)
+        self.backbone = StackedLSTM(input_size=input_size, hidden_size=hidden_size,
+                                    num_layers=num_layers, output_size=output_size)
 
-        self.additional_layer = StackedGRU(input_size=10, hidden_size=128, num_layers=2, output_size=358)
+        # self.additional_layer = StackedGRU(input_size=output_size, hidden_size=hidden_size,
+        #                                    num_layers=num_layers, output_size=output_size)
 
         # self.additional_layer = nn.Sequential(
         #     nn.Linear(358, 512),
@@ -122,10 +125,11 @@ class RegressionModel(nn.Module):
 
     def forward(self, train, gt=None):
         output = self.backbone(train)
-        output = self.additional_layer(output)
-        loss = F.smooth_l1_loss(output, gt) + F.mse_loss(output, gt)
+        # output = self.additional_layer(output)
+        output = output.squeeze()
 
         if gt != None:
+            loss = F.l1_loss(output, gt)
             return output, loss
 
         return output
@@ -157,24 +161,28 @@ if __name__ == "__main__":
         val_dataset = CustomDataset(val_test_data)
         test_dataset = CustomDataset(test_data)
 
-        dataloaders = {'train': DataLoader(train_dataset, batch_size=32, shuffle=True),
-                       'val': DataLoader(val_dataset, batch_size=32, shuffle=True),
+        dataloaders = {'train': DataLoader(train_dataset, batch_size=32, shuffle=False),
+                       'val': DataLoader(val_dataset, batch_size=32, shuffle=False),
                        'test': DataLoader(test_dataset, batch_size=32, shuffle=False),
                        }
 
-        model = RegressionModel()
+        model = RegressionModel(10, 128, 2, 1)
         model.to(device)
+
+        # weight_path = '../Weight/LSTM_GRU.pth'
+        # model.load_state_dict(torch.load(weight_path))
+
+        print('Weights are loaded!')
         print('Finished loading data!')
 
     train = True
     if train:
         print('Training model...')
         TL = Transfer_Learning(device)
-
-        num_epochs = 100
+        num_epochs = 10
         weight_path = '../Weight/LSTM.pth'
-        opt = optim.Adam(model.parameters(), lr=0.01)
-        lr_scheduler = ReduceLROnPlateau(opt, mode='min', factor=0.1, patience=5)
+        opt = optim.Adam(model.parameters(), lr=0.00002)
+        lr_scheduler = ReduceLROnPlateau(opt, mode='min', factor=0.2, patience=3)
 
         parameters = {
             'num_epochs': num_epochs,
@@ -192,21 +200,25 @@ if __name__ == "__main__":
 
         accuracy_check = True
         if accuracy_check:
-            print('Check loss and accuracy...')
-            correct = 0
-            total = 0
+            print('Check loss and MAE...')
+            error = 0
+            i = 0
 
-            with torch.no_grad():
-                for data in dataloaders['val']:
-                    images, mask = data[0].to(device), data[1].to(device)
-                    output = model(images)
+            model.eval()
+            with ((torch.no_grad())):
+                for data, gt in dataloaders['val']:
+                    i += 1
+                    TL.plot_bar('Val', i, len(dataloaders['val']))
+                    data = data.to(device)
+                    gt = gt.to(device)
+                    output = model(data)
 
-                    pred_mask = (output > 0.5).float()
-                    accuracy = (pred_mask == mask).sum().item()
-                    total_pixels = mask.numel()
-                    accuracy = accuracy / total_pixels
+                    MAE = TL.calculate_accuracy(output, gt)
+                    error += MAE
 
-            print(f'Accuracy {100 * accuracy:.2f} %')
+                error = error / len(dataloaders['val'])
+
+            print(f'Total MAE about Valset {error:.4f}')
 
             loss_hist_numpy = loss_hist.applymap(
                 lambda x: x.cpu().detach().numpy() if isinstance(x, torch.Tensor) else x)
@@ -223,14 +235,14 @@ if __name__ == "__main__":
             plt.show()
 
             # plot accuracy progress
-            plt.title("Train-Val Accuracy")
+            plt.title("Train-Val MAE")
             plt.plot(range(1, num_epochs + 1), metric_hist_numpy.iloc[:, 0], label="train")
             plt.plot(range(1, num_epochs + 1), metric_hist_numpy.iloc[:, 1], label="val")
-            plt.ylabel("Accuracy")
+            plt.ylabel("MAE")
             plt.xlabel("Training Epochs")
             plt.legend()
             plt.show()
-            print('Finished check loss and accuracy!')
+            print('Finished checking loss and MAE!')
 
     if not train:
         print('Skipped train...')
@@ -253,18 +265,22 @@ if __name__ == "__main__":
         pred['평균기온'] = predicted
 
         pred.to_csv('../Files/LSTM.csv', index=False)
-        print("Prediction saved!")
+        print("Finished saving Prediction!")
 
     if not Prediction:
         print('Evaluation in progress for testset...')
 
-        model.eval()
         all_predictions = []
         all_gt = []
+        i = 0
 
-        with torch.no_grad():
-            for i in range(len(test_dataset)):
-                data, gt = test_dataset[i]
+        model.eval()
+        with ((torch.no_grad())):
+            for data, gt in dataloaders['test']:
+                i += 1
+                TL.plot_bar('Test', i, len(dataloaders['test']))
+                data = data.to(device)
+                gt = gt.to(device)
                 output = model(data)
 
                 all_predictions.extend(output.tolist())
@@ -288,5 +304,4 @@ if __name__ == "__main__":
         print(f'Mean Squared Error (MSE): {np.mean(all_mse):.4f}')
         print(f'Mean Absolute Error (MAE): {np.mean(all_mae):.4f}')
         print(f'R-squared (R2): {np.mean(all_r2):.4f}')
-        print("Evaluation finished!")
-        
+        print("Finished evaluation!")

@@ -6,50 +6,24 @@ import matplotlib.pyplot as plt
 
 from sklearn.decomposition import PCA
 from catboost import CatBoostRegressor
+from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 
 
 def generate_PCA_data(data: pd.DataFrame):
-    """
-    :param data: momentum_data
-    :return: Mom1+PCA_Data
-    """
-    gt = data.astype(float).loc[:, '평균기온']
-    data_normalized = (data - data.mean()) / data.std()
-    mat = data_normalized.astype(float)
+    gt = pd.DataFrame(data['평균기온'], columns=['평균기온'])
+    X = data.drop('평균기온',axis=1)
 
-    # 1. Searching optimal n_components
-    n_components = min(len(data), 10)
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
 
-    pca = PCA(n_components)
-    pca.fit(mat)
-    total_variance = np.sum(pca.explained_variance_ratio_)
+    pca = PCA(n_components=0.99)
+    X_pca = pca.fit_transform(X_scaled)
+    columns_pca = [f'PCA_{i}' for i in range(1, X_pca.shape[1] + 1)]
+    X_pca_df = pd.DataFrame(X_pca, columns=columns_pca)
+    X_pca_df.index = data.index
 
-    while total_variance > 0.99:
-        n_components -= 1
-        pca = PCA(n_components)
-        pca.fit(mat)
-        total_variance = np.sum(pca.explained_variance_ratio_)
-
-    while total_variance < 0.99:
-        n_components += 1
-        pca = PCA(n_components)
-        pca.fit(mat)
-        total_variance = np.sum(pca.explained_variance_ratio_)
-
-    # 2. PCA
-    pca_mat = PCA(n_components=n_components).fit(data).transform(data)
-    cols = [f'pca_component_{i + 1}' for i in range(pca_mat.shape[1])]
-    mat_pd_pca = pd.DataFrame(pca_mat, columns=cols)
-    mat_pd_pca_matrix = mat_pd_pca.values
-
-    # 3. combined mom1 and PCA data
-    first_column_matrix = np.array(gt).reshape(-1, 1)
-    combined_matrix = np.hstack((first_column_matrix, mat_pd_pca_matrix))
-    df_combined = pd.DataFrame(combined_matrix)
-    df_combined.columns = df_combined.columns.astype(str)
-    df_combined.index = data.index
-
+    df_combined = pd.concat([gt, X_pca_df], axis=1)
     return df_combined
 
 
@@ -64,7 +38,7 @@ if __name__ == "__main__":
     data.index = pd.DatetimeIndex(data.index)
     data['최고기온'] = data['최고기온'].interpolate(method='nearest')
     data['최저기온'] = data['최저기온'].interpolate(method='nearest')
-    data['일교차'] = data['최고기온']-data['최저기온']
+    data['일교차'] = data['최고기온'] - data['최저기온']
     data['평균풍속'] = data['평균풍속'].interpolate(method='linear')
     data['일조합'] = data['일조합'].interpolate(method='linear')
 
@@ -98,7 +72,7 @@ if __name__ == "__main__":
         predicted_values2 = model.predict(missing2)
         data.loc[data['일조율'].isnull(), '일조율'] = predicted_values2
 
-    value3 = False
+    value3 = True
     if value3:
         train_rainfall = data.dropna(axis=0)
         test_rainfall = data[data['강수량'].isnull()].drop('강수량', axis=1)
@@ -112,20 +86,28 @@ if __name__ == "__main__":
         predicted_values_rainfall = cat_model.predict(test_rainfall)
         data.loc[data['강수량'].isnull(), '강수량'] = predicted_values_rainfall
 
-    plt.figure(figsize=(10, 6))
-    plt.plot(data.index, data['강수량'].values, marker='o', linestyle='-', color='b')
-    plt.xlabel('Date')
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.show()
+    # plt.figure(figsize=(10, 6))
+    # plt.plot(data.index, data['강수량'].values, marker='o', linestyle='-', color='b')
+    # plt.xlabel('Date')
+    # plt.xticks(rotation=45)
+    # plt.tight_layout()
+    # plt.show()
 
-    PCA_data = generate_PCA_data(data)
+    pca = True
+    if pca:
+        PCA_data = generate_PCA_data(data)
 
+        date_time = pd.DatetimeIndex(data.index)
+        day_of_year = date_time.dayofyear
 
-    date_time = pd.DatetimeIndex(PCA_data.index)
-    day_of_year = date_time.dayofyear
+        PCA_data['Day sin'] = np.sin(2 * np.pi * day_of_year / 365)
+        PCA_data['Day cos'] = np.cos(2 * np.pi * day_of_year / 365)
+        PCA_data.to_csv('../Database/PCA_data.csv')
 
-    PCA_data['Day sin'] = np.sin(2 * np.pi * day_of_year / 365)
-    PCA_data['Day cos'] = np.cos(2 * np.pi * day_of_year / 365)
+    if not pca:
+        date_time = pd.DatetimeIndex(data.index)
+        day_of_year = date_time.dayofyear
 
-    PCA_data.to_csv('../Database/PCA_data.csv')
+        data['Day sin'] = np.sin(2 * np.pi * day_of_year / 365)
+        data['Day cos'] = np.cos(2 * np.pi * day_of_year / 365)
+        data.to_csv('../Database/PCA_data.csv')

@@ -7,27 +7,9 @@
     <list default="true" id="2e6becd2-476a-4192-b6d5-367c9e3fa6e1" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/dataloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/best.pth.tar" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/best.pth.tar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/best_ND.png" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/best_ND.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/elect_ND_summary.png" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/elect_ND_summary.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/elect_loss_summary.png" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/figures/elect_loss_summary.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/metrics_test_best_weights.json" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/metrics_test_best_weights.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/base_model/params.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/param_search/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/experiments/param_search/params.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/model/LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/model/LSTM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/model/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/model/net.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/net.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/preprocess_elect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/preprocess_elect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/search_hyperparams.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/search_hyperparams.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reference/DeepAR-pytorch/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reference/DeepAR-pytorch/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codes/1_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/1_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codes/EDA.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/EDA.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codes/Transfer_Learning.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/Transfer_Learning.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,34 +37,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.0_preprocessing (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python.0_preprocessing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.1_main.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.Preprocessing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Scratch.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Transfer_Learning.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/김주환/Documents/GitHub/Pair_Trading&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.0_preprocessing (1).executor": "Debug",
+    "Python.0_preprocessing.executor": "Run",
+    "Python.1_main.executor": "Run",
+    "Python.Preprocessing.executor": "Run",
+    "Python.Scratch.executor": "Run",
+    "Python.Transfer_Learning.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/김주환/Documents/GitHub/Pair_Trading",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\김주환\Documents\GitHub\Temperature_Regression\Codes" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Scratch">
+  <component name="RunManager" selected="Python.1_main">
     <configuration name="0_preprocessing (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Temperature_Regression" />
       <option name="ENV_FILES" value="" />
@@ -200,10 +182,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Scratch" />
-        <item itemvalue="Python.0_preprocessing (1)" />
         <item itemvalue="Python.1_main" />
         <item itemvalue="Python.Transfer_Learning" />
+        <item itemvalue="Python.Scratch" />
+        <item itemvalue="Python.0_preprocessing (1)" />
         <item itemvalue="Python.0_preprocessing" />
       </list>
     </recent_temporary>
@@ -240,6 +222,8 @@
       <workItem from="1703736720073" duration="623000" />
       <workItem from="1703738334734" duration="4884000" />
       <workItem from="1703743374739" duration="26000" />
+      <workItem from="1703753926821" duration="616000" />
+      <workItem from="1703817386317" duration="4224000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -257,7 +241,31 @@
       <option name="project" value="LOCAL" />
       <updated>1703644383542</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=".">
+      <option name="closed" value="true" />
+      <created>1703747298600</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703747298600</updated>
+    </task>
+    <task id="LOCAL-00004" summary=".">
+      <option name="closed" value="true" />
+      <created>1703747301962</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703747301962</updated>
+    </task>
+    <task id="LOCAL-00005" summary=".">
+      <option name="closed" value="true" />
+      <created>1703747303075</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1703747303075</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,13 +280,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Codes/Transfer_Learning.py</url>
-          <line>95</line>
+          <line>99</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Codes/Transfer_Learning.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="34" />
+          <url>file://$PROJECT_DIR$/Codes/1_main.py</url>
+          <line>189</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -287,10 +295,11 @@
     <SUITE FILE_PATH="coverage/Temperature_Regression$0_preprocessing__1_.coverage" NAME="0_preprocessing (1) Coverage Results" MODIFIED="1703738666872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$Transfer_Learning.coverage" NAME="Transfer_Learning Coverage Results" MODIFIED="1703595519463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Temperature_Regression$Scratch.coverage" NAME="Scratch Coverage Results" MODIFIED="1703741540323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/Temperature_Regression$Transfer_Learning.coverage" NAME="Transfer_Learning Coverage Results" MODIFIED="1703821741441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$1_main.coverage" NAME="1_main Coverage Results" MODIFIED="1703599207838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$0_preprocessing__1_.coverage" NAME="0_preprocessing (1) Coverage Results" MODIFIED="1703596449442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$0_preprocessing.coverage" NAME="0_preprocessing Coverage Results" MODIFIED="1703409776391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
-    <SUITE FILE_PATH="coverage/Temperature_Regression$1_main.coverage" NAME="1_main Coverage Results" MODIFIED="1703689722125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/Temperature_Regression$1_main.coverage" NAME="1_main Coverage Results" MODIFIED="1703821783430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$Preprocessing.coverage" NAME="0_preprocessing Coverage Results" MODIFIED="1703407974133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
   </component>
 </project>

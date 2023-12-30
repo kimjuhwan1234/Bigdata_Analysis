@@ -1,3 +1,5 @@
+from sklearn.metrics import r2_score
+
 import sys
 import time
 import torch
@@ -19,10 +21,12 @@ class Transfer_Learning:
         for param_group in opt.param_groups:
             return param_group['lr']
 
-    def calculate_accuracy(self, output, gt):
-        # 정확도 계산 (MAE)
-        accuracy = torch.mean(torch.abs(output - gt))
-        return accuracy
+    def calculate_adjusted_r2_score(self, output, gt, n, p):
+        output = output.cpu().detach().numpy()
+        gt = gt.cpu().detach().numpy()
+        r2 = r2_score(gt, output)
+        adjusted_r2 = 1 - ((1 - r2) * (n - 1) / (n - p - 1))
+        return adjusted_r2
 
     def eval_fn(self, model, dataset_dl):
         total_loss = 0.0
@@ -43,7 +47,7 @@ class Transfer_Learning:
                 output, loss = model(data, gt)
                 total_loss += loss
 
-                accuracy = self.calculate_accuracy(output, gt)
+                accuracy = self.calculate_adjusted_r2_score(output, gt, data.shape[1], data.shape[2])
                 total_accuracy += accuracy
 
             total_loss = total_loss / len_data
@@ -71,8 +75,7 @@ class Transfer_Learning:
             opt.step()
 
             total_loss += loss
-
-            accuracy = self.calculate_accuracy(output, gt)
+            accuracy = self.calculate_adjusted_r2_score(output, gt, data.shape[1], data.shape[2])
             total_accuracy += accuracy
 
         total_loss = total_loss / len_data
@@ -101,7 +104,6 @@ class Transfer_Learning:
             print(f'Epoch {epoch + 1}/{num_epochs}, current lr={current_lr}')
 
             train_loss, train_accuracy = self.train_fn(model, train_dl, opt)
-
             loss_history.loc[epoch, 'train'] = train_loss
             accuracy_history.loc[epoch, 'train'] = train_accuracy
 
@@ -118,9 +120,9 @@ class Transfer_Learning:
 
             lr_scheduler.step(val_loss)
 
-            print(f'train loss: {train_loss:.2f}, val loss: {val_loss:.2f}')
-            print(f'MAE: {val_accuracy:.4f} , time: {(time.time() - start_time) / 60:.2f}')
+            print(f'train loss: {train_loss:.4f}, val loss: {val_loss:.4f}')
+            print(f'adjusted_R_square: {val_accuracy:.4f} , time: {(time.time() - start_time) / 60:.2f}')
 
-            print('-' * 10)
+            print(' ')
 
         return model, loss_history, accuracy_history

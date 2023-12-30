@@ -110,4 +110,5 @@ if __name__ == "__main__":
 
         data['Day sin'] = np.sin(2 * np.pi * day_of_year / 365)
         data['Day cos'] = np.cos(2 * np.pi * day_of_year / 365)
+        data.dropna()
         data.to_csv('../Database/PCA_data.csv')

@@ -5,9 +5,11 @@ from sklearn.model_selection import train_test_split
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
+import arch
 import numpy as np
 import torch.nn as nn
 import torch.optim as optim
+import statsmodels.api as sm
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
 
@@ -151,9 +153,11 @@ class RegressionModel(nn.Module):
 if __name__ == "__main__":
     device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
     print(device)
-    data = pd.read_csv('../Database/PCA_data.csv')
-    data.pop('일시')
-    data.astype(float)
+    train = pd.read_csv('../Database/PCA_data.csv')
+    test_input = train.iloc[-365:-7, 1]
+    test_input.index = train['일시'].iloc[-365:-7]
+    train.pop('일시')
+    train.astype(float)
 
     dataload = True
     if dataload:
@@ -162,7 +166,7 @@ if __name__ == "__main__":
         val_ratio = 0.2
         test_ratio = 0.1
 
-        train_data, val_test_data = train_test_split(data, test_size=(val_ratio + test_ratio), shuffle=False)
+        train_data, val_test_data = train_test_split(train, test_size=(val_ratio + test_ratio), shuffle=False)
         val_data, test_data = train_test_split(val_test_data, test_size=test_ratio / (val_ratio + test_ratio),
                                                shuffle=False)
 
@@ -177,10 +181,11 @@ if __name__ == "__main__":
         TL = Transfer_Learning(device)
         print('Finished loading data!')
 
+
     bidirectional = False
     if bidirectional:
         print('Building model...')
-        additional = False
+        additional = True
         model = RegressionModel(10, 64, 2, 1, additional, bidirectional)
         model.to(device)
 
@@ -208,14 +213,13 @@ if __name__ == "__main__":
 
         model.load_state_dict(torch.load(weight_path))
 
-
         print('Weights are loaded!')
 
-    train = False
-    if train:
+    train_eval = False
+    if train_eval:
         print('Training model...')
 
-        num_epochs = 30
+        num_epochs = 10
         opt = optim.Adam(model.parameters(), lr=0.00002)
         lr_scheduler = ReduceLROnPlateau(opt, mode='min', factor=0.2, patience=3)
 
@@ -326,7 +330,7 @@ if __name__ == "__main__":
         print('Try prediction...')
 
         model.to(device)
-        to_predict = data.iloc[-1790:, :]
+        to_predict = train.iloc[-1790:, :]
         to_predict = torch.Tensor(to_predict.values).to(device)
         to_predict = to_predict.unsqueeze(0)
 
@@ -335,9 +339,14 @@ if __name__ == "__main__":
             predicted = model(to_predict)
 
         pred = pd.read_csv('../Database/sample_submission.csv')
-        predicted=predicted.cpu().detach().numpy()
+        predicted = predicted.cpu().detach().numpy()
         pred['평균기온'] = predicted
-        pred.columns=['Date', 'avg_Temperature']
+        pred.columns = ['Date', 'avg_Temperature']
+
+        SARIMA_model = sm.tsa.statespace.SARIMAX(endog=test_input, order=(1, 0, 1), trend='n').fit()
+        GARCH_model = arch.arch_model(SARIMA_model.resid, vol='Garch', p=1, q=1).fit(disp='off', show_warning=False)
+        forecast_variance = GARCH_model.conditional_volatility[-358:]
+        pred['adjusted_Temperature'] = pred['avg_Temperature'].values*np.sqrt(forecast_variance.values)
 
         pred.to_csv(f'../Files/{weight_path[10:-4]}.csv', index=False)
         print("Finished saving Prediction!")

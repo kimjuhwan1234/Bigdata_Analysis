@@ -12,7 +12,7 @@ from sklearn.linear_model import LinearRegression
 
 def generate_PCA_data(data: pd.DataFrame):
     gt = pd.DataFrame(data['평균기온'], columns=['평균기온'])
-    X = data.drop('평균기온',axis=1)
+    X = data.drop('평균기온', axis=1)
 
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
@@ -85,6 +85,7 @@ if __name__ == "__main__":
 
         predicted_values_rainfall = cat_model.predict(test_rainfall)
         data.loc[data['강수량'].isnull(), '강수량'] = predicted_values_rainfall
+        data['강수량'][data['강수량'] < 0] = 0
 
     # plt.figure(figsize=(10, 6))
     # plt.plot(data.index, data['강수량'].values, marker='o', linestyle='-', color='b')

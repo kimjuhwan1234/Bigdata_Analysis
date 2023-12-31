@@ -212,7 +212,7 @@ if __name__ == "__main__":
     bidirectional = True
     if bidirectional:
         print('Building model...')
-        additional = False
+        additional = True
         model = RegressionModel(10, 64, 2, 1, additional, bidirectional)
         model.to(device)
 
@@ -242,11 +242,11 @@ if __name__ == "__main__":
 
         print('Weights are loaded!')
 
-    train_eval = False
+    train_eval = True
     if train_eval:
         print('Training model...')
 
-        num_epochs = 30
+        num_epochs = 100
         opt = optim.Adam(model.parameters(), lr=0.00002)
         lr_scheduler = ReduceLROnPlateau(opt, mode='min', factor=0.2, patience=3)
 

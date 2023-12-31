@@ -1,3 +1,5 @@
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
 from Transfer_Learning import *
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
@@ -185,7 +187,10 @@ if __name__ == "__main__":
     test_input = train.iloc[-365:-5, 1]
     test_input.index = train['일시'].iloc[-365:-5]
     train.pop('일시')
-    train.astype(float)
+
+    # scaler = MinMaxScaler()
+    scaler= StandardScaler()
+    train['평균기온'] = scaler.fit_transform(train['평균기온'].values.reshape(-1, 1))
 
     dataload = True
     if dataload:
@@ -212,7 +217,7 @@ if __name__ == "__main__":
     bidirectional = True
     if bidirectional:
         print('Building model...')
-        additional = True
+        additional = False
         model = RegressionModel(10, 64, 2, 1, additional, bidirectional)
         model.to(device)
 
@@ -246,8 +251,8 @@ if __name__ == "__main__":
     if train_eval:
         print('Training model...')
 
-        num_epochs = 100
-        opt = optim.Adam(model.parameters(), lr=0.00002)
+        num_epochs = 50
+        opt = optim.Adam(model.parameters(), lr=0.0001)
         lr_scheduler = ReduceLROnPlateau(opt, mode='min', factor=0.2, patience=3)
 
         parameters = {
@@ -365,8 +370,11 @@ if __name__ == "__main__":
         with torch.no_grad():
             predicted = model(to_predict)
 
-        pred = pd.read_csv('../Database/sample_submission.csv', encoding='ANSI')
         predicted = predicted.cpu().detach().numpy()
+        predicted = scaler.inverse_transform(predicted.reshape(-1, 1))
+
+
+        pred = pd.read_csv('../Database/sample_submission.csv', encoding='ANSI')
         pred['평균기온'] = predicted
         pred.columns = ['Date', 'avg_Temperature']
 

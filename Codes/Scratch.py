@@ -16,6 +16,6 @@ if __name__ == "__main__":
     sol = pd.read_csv(os.path.join(input_dir2, file2), encoding='ANSI', index_col=0)
     sol.index = pd.DatetimeIndex(sol.index)
 
-    data['평균기온'] = sol['Wiener_Temperature']
+    data['평균기온'] = sol['avg_Temperature']
 
     data.to_csv(os.path.join(input_dir2, file), encoding='utf-8')

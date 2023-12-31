@@ -149,13 +149,41 @@ class RegressionModel(nn.Module):
 
         return output
 
+class Adjustment:
+    def __init__(self, test_input, pred):
+        self.test_input = test_input
+        self.pred = pred
+
+    def generalized_wiener_process(self, a, b):
+        ad = 1 / 4
+        forecast = np.random.normal(a, (b ** 2) * ad, 30)
+        return forecast
+
+    def adjust_GARCH(self):
+        SARIMA_model = sm.tsa.statespace.SARIMAX(endog=self.test_input, order=(1, 0, 1), trend='n').fit()
+        GARCH = arch.arch_model(SARIMA_model.resid, vol='Garch', p=1, q=1)
+        GARCH_model = GARCH.fit(disp='off', show_warning=False)
+        conditional_var = GARCH_model.conditional_volatility[:-2]
+        error = np.random.randn(358) * np.sqrt(conditional_var)
+        self.pred['GARCH_Temperature'] = self.pred['avg_Temperature'].values + error.values
+
+    def adjust_Wiener_Process(self, a):
+        monthly_temperature = np.split(self.test_input.values, 12)
+        forecasted_var = []
+        for i in range(len(monthly_temperature)):
+            b = np.std(monthly_temperature[i])
+            forecasted_var.append(self.generalized_wiener_process(a, b))
+        forecasted_var = pd.DataFrame(np.abs(np.concatenate(forecasted_var))).iloc[:358]
+        error = np.random.randn(358) * np.sqrt(forecasted_var[0])
+        self.pred['Wiener_Temperature'] = self.pred['avg_Temperature'].values + error.values
+
 
 if __name__ == "__main__":
     device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
     print(device)
     train = pd.read_csv('../Database/PCA_data.csv')
-    test_input = train.iloc[-365:-7, 1]
-    test_input.index = train['일시'].iloc[-365:-7]
+    test_input = train.iloc[-365:-5, 1]
+    test_input.index = train['일시'].iloc[-365:-5]
     train.pop('일시')
     train.astype(float)
 
@@ -181,11 +209,10 @@ if __name__ == "__main__":
         TL = Transfer_Learning(device)
         print('Finished loading data!')
 
-
-    bidirectional = False
+    bidirectional = True
     if bidirectional:
         print('Building model...')
-        additional = True
+        additional = False
         model = RegressionModel(10, 64, 2, 1, additional, bidirectional)
         model.to(device)
 
@@ -219,7 +246,7 @@ if __name__ == "__main__":
     if train_eval:
         print('Training model...')
 
-        num_epochs = 10
+        num_epochs = 30
         opt = optim.Adam(model.parameters(), lr=0.00002)
         lr_scheduler = ReduceLROnPlateau(opt, mode='min', factor=0.2, patience=3)
 
@@ -338,15 +365,19 @@ if __name__ == "__main__":
         with torch.no_grad():
             predicted = model(to_predict)
 
-        pred = pd.read_csv('../Database/sample_submission.csv')
+        pred = pd.read_csv('../Database/sample_submission.csv', encoding='ANSI')
         predicted = predicted.cpu().detach().numpy()
         pred['평균기온'] = predicted
         pred.columns = ['Date', 'avg_Temperature']
 
-        SARIMA_model = sm.tsa.statespace.SARIMAX(endog=test_input, order=(1, 0, 1), trend='n').fit()
-        GARCH_model = arch.arch_model(SARIMA_model.resid, vol='Garch', p=1, q=1).fit(disp='off', show_warning=False)
-        forecast_variance = GARCH_model.conditional_volatility[-358:]
-        pred['adjusted_Temperature'] = pred['avg_Temperature'].values*np.sqrt(forecast_variance.values)
+        print('Finished prediction!')
 
-        pred.to_csv(f'../Files/{weight_path[10:-4]}.csv', index=False)
-        print("Finished saving Prediction!")
+        adjusted_temp = True
+        if adjusted_temp:
+            print('Adjusting prediction...')
+            Ad = Adjustment(test_input, pred)
+            Ad.adjust_GARCH()
+            Ad.adjust_Wiener_Process(0)
+
+            Ad.pred.to_csv(f'../Files/{weight_path[10:-4]}.csv', encoding='ANSI', index=False)
+            print("Finished saving adjusted_Prediction!")

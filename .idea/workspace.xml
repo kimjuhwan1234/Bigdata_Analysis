@@ -9,9 +9,8 @@
       <change beforePath="$PROJECT_DIR$/Codes/0_preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/0_preprocessing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Codes/1_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/1_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Codes/EDA.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/EDA.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/Scratch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/Scratch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/PCA_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Database/PCA_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/bi_LSTM.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Files/bi_LSTM.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/bi_LSTM_GRU.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Files/bi_LSTM_GRU.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/sample_submission.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Files/sample_submission.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,12 +28,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "kimjuhwan1234"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kimjuhwan1234&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -54,28 +53,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.0_preprocessing (1).executor": "Run",
-    "Python.0_preprocessing.executor": "Run",
-    "Python.1_main.executor": "Run",
-    "Python.Preprocessing.executor": "Run",
-    "Python.Scratch.executor": "Run",
-    "Python.Transfer_Learning.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/김주환/Documents/GitHub/Temperature_Regression/Files",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.0_preprocessing (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.0_preprocessing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.1_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Preprocessing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Scratch.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Transfer_Learning.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/김주환/Documents/GitHub/Temperature_Regression/Files&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\김주환\Documents\GitHub\Temperature_Regression\Codes" />
@@ -203,8 +202,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.1_main" />
-        <item itemvalue="Python.Scratch" />
         <item itemvalue="Python.0_preprocessing (1)" />
+        <item itemvalue="Python.Scratch" />
         <item itemvalue="Python.Transfer_Learning" />
         <item itemvalue="Python.0_preprocessing" />
       </list>
@@ -247,7 +246,9 @@
       <workItem from="1703891546166" duration="23512000" />
       <workItem from="1703950240519" duration="4804000" />
       <workItem from="1703955238215" duration="319000" />
-      <workItem from="1703989341828" duration="26474000" />
+      <workItem from="1703989341828" duration="27811000" />
+      <workItem from="1704028876368" duration="2045000" />
+      <workItem from="1704071607917" duration="3798000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -337,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704009154351</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary=".">
+      <option name="closed" value="true" />
+      <created>1704026377745</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1704026377745</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,18 +364,23 @@
           <line>18</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Codes/1_main.py</url>
+          <line>194</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Temperature_Regression$0_preprocessing__1_.coverage" NAME="0_preprocessing (1) Coverage Results" MODIFIED="1704015991226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/Temperature_Regression$0_preprocessing__1_.coverage" NAME="0_preprocessing (1) Coverage Results" MODIFIED="1704074980915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$Transfer_Learning.coverage" NAME="Transfer_Learning Coverage Results" MODIFIED="1703595519463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Temperature_Regression$Transfer_Learning.coverage" NAME="Transfer_Learning Coverage Results" MODIFIED="1703821741441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
-    <SUITE FILE_PATH="coverage/Temperature_Regression$Scratch.coverage" NAME="Scratch Coverage Results" MODIFIED="1704024036259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/Temperature_Regression$Scratch.coverage" NAME="Scratch Coverage Results" MODIFIED="1704033734904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$1_main.coverage" NAME="1_main Coverage Results" MODIFIED="1703599207838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$0_preprocessing__1_.coverage" NAME="0_preprocessing (1) Coverage Results" MODIFIED="1703596449442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$0_preprocessing.coverage" NAME="0_preprocessing Coverage Results" MODIFIED="1703409776391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
-    <SUITE FILE_PATH="coverage/Temperature_Regression$1_main.coverage" NAME="1_main Coverage Results" MODIFIED="1704026342001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
+    <SUITE FILE_PATH="coverage/Temperature_Regression$1_main.coverage" NAME="1_main Coverage Results" MODIFIED="1704075371746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
     <SUITE FILE_PATH="coverage/Bigdata_Analysis$Preprocessing.coverage" NAME="0_preprocessing Coverage Results" MODIFIED="1703407974133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Codes" />
   </component>
 </project>

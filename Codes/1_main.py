@@ -52,7 +52,7 @@ class StackedLSTM(nn.Module):
 
         # 첫 번째 LSTM 층
         self.lstm1 = nn.LSTM(input_size, hidden_size, num_layers=num_layers,
-                             bidirectional=bidirectional, dropout=0.4, batch_first=True)
+                             bidirectional=bidirectional, dropout=0.2, batch_first=True)
 
         # 두 번째 LSTM 층
         self.lstm2 = nn.LSTM(hidden_size2, hidden_size, num_layers=num_layers,
@@ -99,7 +99,7 @@ class StackedGRU(nn.Module):
 
         # 두 번째 GRU 층
         self.GRU2 = nn.GRU(hidden_size2, hidden_size, num_layers=num_layers,
-                           bidirectional=bidirectional, dropout=0.2, batch_first=True)
+                           bidirectional=bidirectional, dropout=0.3, batch_first=True)
 
         # 세 번째 GRU 층
         self.GRU3 = nn.GRU(hidden_size2, hidden_size, num_layers=num_layers,
@@ -188,7 +188,6 @@ if __name__ == "__main__":
     test_input.index = train['일시'].iloc[-365:-5]
     train.pop('일시')
 
-    # scaler = MinMaxScaler()
     scaler= StandardScaler()
     train['평균기온'] = scaler.fit_transform(train['평균기온'].values.reshape(-1, 1))
 
@@ -234,7 +233,7 @@ if __name__ == "__main__":
     if not bidirectional:
         print('Building model...')
         additional = False
-        model = RegressionModel(10, 128, 2, 1, additional, bidirectional)
+        model = RegressionModel(9, 128, 2, 1, additional, bidirectional)
         model.to(device)
 
         if additional:
@@ -247,12 +246,12 @@ if __name__ == "__main__":
 
         print('Weights are loaded!')
 
-    train_eval = True
+    train_eval = False
     if train_eval:
         print('Training model...')
 
         num_epochs = 50
-        opt = optim.Adam(model.parameters(), lr=0.0001)
+        opt = optim.Adam(model.parameters(), lr=0.00002)
         lr_scheduler = ReduceLROnPlateau(opt, mode='min', factor=0.2, patience=3)
 
         parameters = {

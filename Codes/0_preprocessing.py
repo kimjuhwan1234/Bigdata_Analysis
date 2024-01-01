@@ -17,7 +17,10 @@ def generate_PCA_data(data: pd.DataFrame):
     X_scaled = scaler.fit_transform(X)
 
     pca = PCA(n_components=0.99)
-    X_pca = pca.fit_transform(X_scaled)
+    pca.fit(X_scaled)
+    print(pca.explained_variance_ratio_)
+    X_pca = pca.transform(X_scaled)
+
     columns_pca = [f'PCA_{i}' for i in range(1, X_pca.shape[1] + 1)]
     X_pca_df = pd.DataFrame(X_pca, columns=columns_pca)
     X_pca_df.index = data.index

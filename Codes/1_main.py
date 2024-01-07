@@ -181,7 +181,7 @@ class Adjustment:
 
 
 if __name__ == "__main__":
-    device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+    device = torch.device('CUDA') if torch.cuda.is_available() else torch.device('cpu')
     print(device)
     train = pd.read_csv('../Database/PCA_data.csv')
     test_input = train.iloc[-365:-5, 1]

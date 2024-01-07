@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e6becd2-476a-4192-b6d5-367c9e3fa6e1" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/Temperature_Regression.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Temperature_Regression.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__4_08__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28_오후_4_08_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/0_preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/0_preprocessing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Codes/1_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/1_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/EDA.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/EDA.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/PCA_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Database/PCA_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/bi_LSTM.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Files/bi_LSTM.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/sample_submission.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Files/sample_submission.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +56,7 @@
   &quot;keyToString&quot;: {
     &quot;Python.0_preprocessing (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.0_preprocessing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.1_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.1_main.executor&quot;: &quot;Debug&quot;,
     &quot;Python.Preprocessing.executor&quot;: &quot;Run&quot;,
     &quot;Python.Scratch.executor&quot;: &quot;Run&quot;,
     &quot;Python.Transfer_Learning.executor&quot;: &quot;Run&quot;,
@@ -65,13 +64,13 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/김주환/Documents/GitHub/Temperature_Regression/Files&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/asas4/Documents/GitHub/Pairs_Trading&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -139,8 +138,9 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Codes" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -212,7 +212,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+        <option value="bundled-python-sdk-5de4e687c57e-c6172f9078bd-com.jetbrains.pycharm.ds.sharedIndexes.bundled-DS-233.13135.105" />
       </set>
     </attachedChunks>
   </component>

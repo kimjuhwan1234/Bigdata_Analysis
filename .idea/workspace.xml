@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e6becd2-476a-4192-b6d5-367c9e3fa6e1" name="Changes" comment=".">
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/.idea/Temperature_Regression.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Temperature_Regression.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__4_08__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28_오후_4_08_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/1_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/1_main.py" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__4_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__4_08__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
->>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,15 +244,6 @@
       <workItem from="1703989341828" duration="27811000" />
       <workItem from="1704028876368" duration="2045000" />
       <workItem from="1704071607917" duration="3798000" />
-      <workItem from="1704170448587" duration="119000" />
-      <workItem from="1704170596127" duration="8000" />
-      <workItem from="1704170816896" duration="126000" />
-      <workItem from="1704180730829" duration="6000" />
-      <workItem from="1704267980659" duration="782000" />
-      <workItem from="1704332681108" duration="25000" />
-      <workItem from="1704333015494" duration="39000" />
-      <workItem from="1704333147592" duration="640000" />
-      <workItem from="1704333925136" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -360,15 +341,7 @@
       <option name="project" value="LOCAL" />
       <updated>1704026377745</updated>
     </task>
-    <task id="LOCAL-00013" summary=".">
-      <option name="closed" value="true" />
-      <created>1704160074785</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1704160074785</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

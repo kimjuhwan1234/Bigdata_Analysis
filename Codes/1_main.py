@@ -195,8 +195,8 @@ if __name__ == "__main__":
     if dataload:
         print('Loading data...')
         train_ratio = 0.7
-        val_ratio = 0.2
-        test_ratio = 0.1
+        val_ratio = 0.1
+        test_ratio = 0.2
 
         train_data, val_test_data = train_test_split(train, test_size=(val_ratio + test_ratio), shuffle=False)
         val_data, test_data = train_test_split(val_test_data, test_size=test_ratio / (val_ratio + test_ratio),

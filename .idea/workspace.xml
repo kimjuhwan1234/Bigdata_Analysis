@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e6becd2-476a-4192-b6d5-367c9e3fa6e1" name="Changes" comment=".">
-      <change beforePath="$PROJECT_DIR$/Codes/1_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codes/1_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +59,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/asas4/Documents/GitHub/Temperature_Regression/Database",
+    "last_opened_file_path": "C:/Users/asas4/Documents/GitHub/Project/Volatility_Forecasting",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
